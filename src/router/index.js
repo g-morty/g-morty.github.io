@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: ()=> import('@/pages/home')
   },
   {
     path: '/about',
