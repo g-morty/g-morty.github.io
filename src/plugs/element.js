@@ -4,7 +4,7 @@ import "element-ui/lib/theme-chalk/index.css"
 import {
   Header, Container, Main, Footer,
   Button, Input, Avatar, Image,
-  Link, Divider, Notification
+  Link, Divider, Notification,Drawer
 } from "element-ui"
 
 Vue.use(Button)
@@ -17,4 +17,5 @@ Vue.use(Input)
 Vue.use(Image)
 Vue.use(Link)
 Vue.use(Divider)
+Vue.use(Drawer)
 Vue.prototype.$notify = Notification;

@@ -1,108 +1,30 @@
 <template>
-  <el-container :style="`height: ${windowHeight}px`">
+  <el-container :style="`min-height: ${windowHeight}px`">
     <!-- header -->
     <el-header>
+      <el-image class="logo" :src="require('@/assets/logo.png')"></el-image>
       <div class="search-box">
         <el-input class="search-input" @keypress.enter.native="handleSearch" v-model="searchUrl" autocomplete="on" suffix-icon="el-icon-search" placeholder="搜索" autofocus></el-input>
       </div>
+      <div class="account-icon"><i class="el-icon-user"></i></div>
     </el-header>
     <!-- main -->
     <el-main>
-      <div class="main-box">
-        <ul>
-          <li>
-            <div class="nav-line">
-              <div class="nav-title">直播</div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
+      <div class="nav-box">
+        <template v-for="(item,index) in navData">
+          <div class="nav-line" :key="index">
+            <div class="nav-title">{{item.navTitle}}</div>
+            <a class="nav-item" v-for="(subItem,subIndex) in item.navList" :key="subIndex" :href="subItem.navLink" target="_blank">
+              <el-image class="nav-icon" :lazy="true" :src="subItem.navIcon" fit="cover">
+                <el-image class="nav-icon" slot="error" src="/favicon.ico" fit="cover"></el-image>
+              </el-image>
+              <el-link class="nav-link" :underline="false" target="_blank">{{subItem.navName}}</el-link>
+            </a>
+          </div>
+          <el-divider></el-divider>
 
-            </div>
-            <el-divider></el-divider>
-          </li>
-          <li>
-            <div class="nav-line">
-              <div class="nav-title">直播</div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
+        </template>
 
-            </div>
-            <el-divider></el-divider>
-          </li>
-          <li>
-            <div class="nav-line">
-              <div class="nav-title">直播</div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-
-            </div>
-            <el-divider></el-divider>
-          </li>
-          <li>
-            <div class="nav-line">
-              <div class="nav-title">直播</div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙一号</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-              <div class="nav-item">
-                <el-image class="nav-icon" src="http://www.bilibili.com/favicon.ico"></el-image>
-                <el-link class="nav-link" :underline="false" target="_blank">虎牙</el-link>
-              </div>
-
-            </div>
-            <el-divider></el-divider>
-          </li>
-        </ul>
       </div>
     </el-main>
     <!-- footer -->
@@ -112,17 +34,23 @@
         <div class="email-content">g_morty@qq.com</div>
       </div>
     </el-footer>
+    <!-- drawer -->
+    <!-- <el-drawer title="我是标题" :visible.sync="drawer" :with-header="false">
+      <span>我来啦!</span>
+    </el-drawer> -->
   </el-container>
 </template>
 
 <script>
+import navData from "./navData";
 export default {
   data() {
     return {
+      // 输入框内输入的内容
       searchUrl: "",
-      msg: "qwe",
-      url: "https://www.baidu.com/s?ie=UTF-8&wd=asfs",
-      windowHeight: 44,
+      // 页面高度
+      windowHeight: 0,
+      navData,
     };
   },
   created() {
@@ -189,20 +117,33 @@ export default {
     padding-top: 20px;
     padding-bottom: 10px;
     box-sizing: content-box;
-    background-color: rgb(237, 245, 244);
+    background-color: #edf5f4;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    .logo {
+      width: 200px;
+    }
     .search-box {
       display: flex;
       .search-input {
         width: 400px;
       }
     }
+    .account-icon {
+      width: 200px;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 20px;
+      i {
+        color: @primary-color;
+        font-size: 26px;
+      }
+    }
   }
   .el-main {
     background-color: @page-bg-color;
-    .main-box {
+    .nav-box {
       margin: 40px auto 0;
       width: 80%;
       .nav-line {
@@ -211,9 +152,9 @@ export default {
         // 箭头标题
         .nav-title {
           @arrow-length: 20px;
-          width: 60px;
+          width: 70px;
           height: @nav-height;
-          background-color: @primary-color;
+          background-image: linear-gradient(to right, #59c8f7, @primary-color);
           color: white;
           font-size: 14px;
           box-sizing: border-box;
@@ -221,6 +162,7 @@ export default {
           text-align: right;
           position: relative;
           margin-right: 60px;
+          padding-right: 4px;
           &:before {
             content: " ";
             width: 0px;
@@ -266,7 +208,7 @@ export default {
     background-color: #90939922;
     display: flex;
     border-top: 1px solid #90939944;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     font-size: 14px;
     .email-box {
