@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open",
+    "serve": "vue-cli-service serve --open --host 127.0.0.1 --port 80",
     "build": "vue-cli-service build",
-    "dist":"serve -s ./dist -p 2000"
+    "dist": "serve -s ./dist -p 2000"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.12",
     "less": "^4.1.3",
     "less-loader": "^11.1.0",
+    "nanoid": "^4.0.0",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"

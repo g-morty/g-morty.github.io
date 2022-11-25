@@ -148,9 +148,14 @@ export default [
         navIcon: "https://www.wepe.com.cn/favicon.ico",
       },
       {
-        navName: "文字生成",
-        navLink: "http://www.qt86.com/2",
-        navIcon: "http://www.qt86.com/favicon.ico",
+        navName: "标智客",
+        navLink: "https://www.logomaker.com.cn/",
+        navIcon: "https://www.logomaker.com.cn/favicon.ico",
+      },
+      {
+        navName: "佐糖",
+        navLink: "https://picwish.cn/",
+        navIcon: "https://qncdn.aoscdn.com/astro/picwish/assets/index-top-banner-logo.b8d7b10f.svg",
       },
     ],
   },
@@ -208,6 +213,25 @@ export default [
         navName: "公众平台",
         navLink: "https://mp.weixin.qq.com/",
         navIcon: "https://mp.weixin.qq.com/favicon.ico",
+      }, {
+        navName: "开放社区",
+        navLink: "https://open.weixin.qq.com/",
+        navIcon: "https://open.weixin.qq.com/favicon.ico",
+      },
+    ],
+  },
+  {
+    navTitle: "UI",
+    navList: [
+      {
+        navName: "elementUI2.x",
+        navLink: "https://element.eleme.io/#/zh-CN",
+        navIcon: "https://element.eleme.io/favicon.ico",
+      },
+      {
+        navName: "elementUI3.x",
+        navLink: "https://element-plus.org/zh-CN/#/zh-CN",
+        navIcon: "https://element.eleme.io/favicon.ico",
       }, {
         navName: "开放社区",
         navLink: "https://open.weixin.qq.com/",
