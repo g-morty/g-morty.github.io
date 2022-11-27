@@ -20,9 +20,7 @@
             </a>
           </div>
           <el-divider></el-divider>
-
         </template>
-
       </div>
     </el-main>
     <!-- footer -->
@@ -32,7 +30,6 @@
         <div class="email-content">g_morty@qq.com</div>
       </div>
     </el-footer>
-
   </el-container>
 </template>
 
@@ -53,7 +50,6 @@ export default {
     this.windowHeight = window.innerHeight;
     window.onresize = () => (this.windowHeight = window.innerHeight);
   },
-  // https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&wd=aa&csor=2
   methods: {
     // 点击footer下的邮箱按钮
     saveEmail() {
@@ -110,7 +106,6 @@ export default {
     .logo {
       width: 200px;
     }
-
     .account-icon {
       width: 200px;
       display: flex;
