@@ -3,10 +3,8 @@
     <!-- header -->
     <el-header>
       <el-image class="logo" :src="require('@/assets/logo.png')"></el-image>
-      <div class="search-box">
-        <el-input class="search-input" @keypress.enter.native="handleSearch" v-model="searchUrl" autocomplete="on" suffix-icon="el-icon-search" placeholder="搜索" autofocus></el-input>
-      </div>
-      <div class="account-icon"><i class="el-icon-user"></i></div>
+      <SearchBox />
+      <div class="account-icon" @click="showDrawer"><i class="el-icon-user"></i></div>
     </el-header>
     <!-- main -->
     <el-main>
@@ -22,9 +20,7 @@
             </a>
           </div>
           <el-divider></el-divider>
-
         </template>
-
       </div>
     </el-main>
     <!-- footer -->
@@ -34,65 +30,46 @@
         <div class="email-content">g_morty@qq.com</div>
       </div>
     </el-footer>
-    <!-- drawer -->
-    <!-- <el-drawer title="我是标题" :visible.sync="drawer" :with-header="false">
-      <span>我来啦!</span>
-    </el-drawer> -->
   </el-container>
 </template>
 
 <script>
 import navData from "./navData";
+import SearchBox from "./search.vue";
 export default {
   data() {
     return {
-      // 输入框内输入的内容
-      searchUrl: "",
       // 页面高度
       windowHeight: 0,
+      // 导航数据
       navData,
     };
   },
+  components: { SearchBox },
   created() {
     this.windowHeight = window.innerHeight;
     window.onresize = () => (this.windowHeight = window.innerHeight);
   },
   methods: {
-    // 搜索框回车
-    handleSearch() {
-      const searchUrl = this.searchUrl;
-      // 域名正则列表
-      const regList = [
-        // 域名，非网址，不包含协议
-        /^([0-9a-zA-Z-]{1,}\.)+([a-zA-Z]{2,4})(:\d{1,5}\/?)*$/,
-        // 带端口网址
-        /^((ht|f)tps?:\/\/)?[\w-]+(\.[\w-]+)+:\d{1,5}\/?$/,
-        // 网址url
-        /^(((ht|f)tps?):\/\/)?([^!@#$%^&*?.\s-]([^!@#$%^&*?.\s]{0,63}[^!@#$%^&*?.\s])?\.)+[a-z]{2,6}\/?/,
-      ];
-      // 是否是域名
-      const isUrl = regList.some((item) => item.test(searchUrl));
-      // 如果是域名跳转至相应网址
-      if (isUrl) {
-        // 是否携带协议头
-        if (regList[0].test(searchUrl)) {
-          window.open("http://" + searchUrl);
-        } else {
-          window.open(searchUrl);
-        }
-      }
-      // 如果不是域名，打开百度搜索
-      else {
-        searchUrl.trim() !== "" &&
-          window.open("https://www.baidu.com/s?ie=UTF-8&wd=" + searchUrl);
-      }
-      // 清空输入框
-      this.searchUrl = "";
-    },
     // 点击footer下的邮箱按钮
     saveEmail() {
       // 复制信息到邮箱
-      navigator.clipboard.writeText("g_morty@qq.com");
+      // navigator.clipboard.writeText("g_morty@qq.com");
+      try {
+        console.log("try");
+        navigator.clipboard.writeText("g_morty@qq.com");
+      } catch (e) {
+        console.log("catch");
+        const textArea = document.createElement("textarea");
+        textArea.value = "g_morty@qq.com";
+        // 使text area不在viewport，同时设置不可见
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        textArea.remove();
+      }
+
       // 提示成功
       this.$notify({
         title: "email",
@@ -102,6 +79,11 @@ export default {
         duration: "2000",
         offset: 30,
       });
+    },
+    // 展示抽屉
+    showDrawer() {
+      console.log(2);
+      this.$message("待完成");
     },
   },
 };
@@ -124,17 +106,12 @@ export default {
     .logo {
       width: 200px;
     }
-    .search-box {
-      display: flex;
-      .search-input {
-        width: 400px;
-      }
-    }
     .account-icon {
       width: 200px;
       display: flex;
       justify-content: flex-end;
       padding-right: 20px;
+      box-sizing: border-box;
       i {
         color: @primary-color;
         font-size: 26px;
