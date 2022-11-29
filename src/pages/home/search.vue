@@ -27,31 +27,23 @@ export default {
   methods: {
     // 搜索框内容改变时，获取内容补充
     async searchByKeyWord(keyWord) {
-      // this.searchUrl = keyWord;
-      // 这里借助百度的api,去拿到内容补充的信息（不得不说，百度api响应速度是真快）
+      // 借助百度api，根据关键字获取内容补充列表
       const searchRes = await this.$axios.get(
         `/baidu/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&wd=${keyWord}&req=2`
       );
-      // 如果顺利拿到数据
-      if (searchRes.status === 200 && searchRes.statusText === "OK") {
-        // 如果拿到的数据不是空
-        if (searchRes.data.g) {
-          this.searchList = searchRes.data.g.map((item) => ({
-            key: this.$nanoid(),
-            value: item.q,
-          }));
-        } else {
-          // 如果是空，给一个初试值
-          this.searchList = [
-            {
-              key: this.$nanoid(),
-              value: keyWord,
-            },
-          ];
-        }
-      } else {
-        this.searchList = [];
+      // 如果顺利拿到数据(状态为200、状态描述为OK、数据不为空、输入框不为空)
+      if (
+        searchRes.status === 200 &&
+        searchRes.statusText === "OK" &&
+        !!searchRes.data.g &&
+        !!this.searchUrl
+      ) {
+        return (this.searchList = searchRes.data.g.map((item) => ({
+          key: this.$nanoid(),
+          value: item.q,
+        })));
       }
+      this.searchList = [];
     },
 
     // 添加关键字到搜索框

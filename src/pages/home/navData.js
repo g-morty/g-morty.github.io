@@ -24,9 +24,15 @@ export default [
       },
     ],
   },
+
   {
-    navTitle: "直播",
+    navTitle: "视频",
     navList: [
+      {
+        navName: "B站",
+        navLink: "https://www.bilibili.com/",
+        navIcon: "https://www.bilibili.com/favicon.ico",
+      },
       {
         navName: "虎牙",
         navLink: "https://www.huya.com/",
@@ -36,16 +42,6 @@ export default [
         navName: "斗鱼",
         navLink: "https://www.douyu.com/",
         navIcon: "https://www.douyu.com/favicon.ico",
-      },
-    ],
-  },
-  {
-    navTitle: "视频",
-    navList: [
-      {
-        navName: "B站",
-        navLink: "https://www.bilibili.com/",
-        navIcon: "https://www.bilibili.com/favicon.ico",
       },
       {
         navName: "A站",
@@ -130,6 +126,31 @@ export default [
     ],
   },
   {
+    navTitle: "GIT",
+    navList: [
+      {
+        navName: "github",
+        navLink: "https://github.com/",
+        navIcon: "https://github.com/favicon.ico",
+      },
+      {
+        navName: "git",
+        navLink: "https://git-scm.com/",
+        navIcon: "https://git-scm.com/favicon.ico",
+      },
+      {
+        navName: "coding",
+        navLink: "https://g-morty.coding.net/user",
+        navIcon: "https://help-assets.codehub.cn/enterprise/guanwang/favicon-dark.ico",
+      },
+      {
+        navName: "gitee",
+        navLink: "https://gitee.com/",
+        navIcon: "https://gitee.com/favicon.ico",
+      },
+    ],
+  },
+  {
     navTitle: "工具",
     navList: [
       {
@@ -156,16 +177,6 @@ export default [
         navName: "佐糖",
         navLink: "https://picwish.cn/",
         navIcon: "https://qncdn.aoscdn.com/astro/picwish/assets/index-top-banner-logo.b8d7b10f.svg",
-      },
-      {
-        navName: "智标客",
-        navLink: "https://www.logomaker.com.cn/",
-        navIcon: "https://www.logomaker.com.cn/favicon.ico",
-      },
-      {
-        navName: "佐糖",
-        navLink: "https://picwish.cn/",
-        navIcon: "https://picwish.cn/favicon.ico",
       },
     ],
   },
@@ -202,12 +213,17 @@ export default [
         navLink: "https://vuex.vuejs.org/zh/",
         navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
       },
-      // 
       {
-        navName: "wepy",
-        navLink: "https://wepyjs.github.io/wepy-docs/",
+        navName: "wepy1",
+        navLink: "https://wepyjs.github.io/wepy-docs/1.x/",
         navIcon: "https://wepyjs.github.io/wepy-docs/static/img/wepylogo.png",
       },
+      {
+        navName: "wepy2",
+        navLink: "https://wepyjs.github.io/wepy-docs/2.x/#/",
+        navIcon: "https://wepyjs.github.io/wepy-docs/static/img/wepylogo.png",
+      },
+
 
     ],
   },
@@ -242,10 +258,16 @@ export default [
         navName: "elementUI3.x",
         navLink: "https://element-plus.org/zh-CN/#/zh-CN",
         navIcon: "https://element.eleme.io/favicon.ico",
-      }, {
-        navName: "开放社区",
-        navLink: "https://open.weixin.qq.com/",
-        navIcon: "https://open.weixin.qq.com/favicon.ico",
+      },
+      {
+        navName: "vant",
+        navLink: "https://vant-contrib.gitee.io/vant/#/zh-CN",
+        navIcon: "https://fastly.jsdelivr.net/npm/@vant/assets/logo.png",
+      },
+      {
+        navName: "bootstrap",
+        navLink: "https://v5.bootcss.com/",
+        navIcon: "https://v5.bootcss.com/favicon.ico",
       },
     ],
   },

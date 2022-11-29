@@ -173,6 +173,8 @@ export default {
             height: 20px;
             border-radius: 50%;
             overflow: hidden;
+            // border: 1px solid #409eff;
+            background-color: #60626633;
           }
           .nav-link {
             margin-left: 6px;
