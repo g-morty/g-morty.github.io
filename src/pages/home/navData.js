@@ -152,6 +152,16 @@ export default [
         navLink: "http://www.qt86.com/2",
         navIcon: "http://www.qt86.com/favicon.ico",
       },
+      {
+        navName: "智标客",
+        navLink: "https://www.logomaker.com.cn/",
+        navIcon: "https://www.logomaker.com.cn/favicon.ico",
+      },
+      {
+        navName: "佐糖",
+        navLink: "https://picwish.cn/",
+        navIcon: "https://picwish.cn/favicon.ico",
+      },
     ],
   },
   {
