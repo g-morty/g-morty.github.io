@@ -228,6 +228,53 @@ export default [
     ],
   },
   {
+    navTitle: "react",
+    navList: [
+      {
+        navName: "vue2.x",
+        navLink: "https://v2.cn.vuejs.org/",
+        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
+      },
+      {
+        navName: "vue3.x",
+        navLink: "https://cn.vuejs.org/",
+        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
+      },
+      {
+        navName: "vue-cli",
+        navLink: "https://cli.vuejs.org/zh/",
+        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
+      },
+      {
+        navName: "vite",
+        navLink: "https://vitejs.cn/",
+        navIcon: "https://vitejs.cn/logo.svg",
+      },
+      {
+        navName: "vue-router",
+        navLink: "https://v3.router.vuejs.org/zh/",
+        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
+      },
+      {
+        navName: "vuex",
+        navLink: "https://vuex.vuejs.org/zh/",
+        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
+      },
+      {
+        navName: "wepy1",
+        navLink: "https://wepyjs.github.io/wepy-docs/1.x/",
+        navIcon: "https://wepyjs.github.io/wepy-docs/static/img/wepylogo.png",
+      },
+      {
+        navName: "wepy2",
+        navLink: "https://wepyjs.github.io/wepy-docs/2.x/#/",
+        navIcon: "https://wepyjs.github.io/wepy-docs/static/img/wepylogo.png",
+      },
+
+
+    ],
+  },
+  {
     navTitle: "小程序",
     navList: [
       {
