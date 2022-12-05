@@ -5,11 +5,16 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/123',
     name: 'home',
-    component: ()=> import('@/pages/home')
+    component: () => import('@/pages/home')
   },
- 
+  {
+    path: '*',
+    // path: '/sign',
+    name: 'sign',
+    component: () => import('@/pages/sign')
+  },
 ]
 
 const router = new VueRouter({
