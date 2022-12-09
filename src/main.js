@@ -9,9 +9,13 @@ import './plugs/element'
 
 
 
+// 隐藏开发提示
 Vue.config.productionTip = false;
+// 挂载axios
 Vue.prototype.$axios = axios;
+// 挂载nanoid
 Vue.prototype.$nanoid = nanoid;
+
 
 new Vue({
   router,

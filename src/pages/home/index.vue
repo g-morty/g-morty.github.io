@@ -43,12 +43,17 @@ export default {
       windowHeight: 0,
       // 导航数据
       navData,
+      // 是否显示导航
+      isShowNavigate: false,
     };
   },
   components: { SearchBox },
   created() {
+    // 监听页面高度
     this.windowHeight = window.innerHeight;
     window.onresize = () => (this.windowHeight = window.innerHeight);
+    // 判断是否登录
+    this.isLogin();
   },
   methods: {
     // 点击footer下的邮箱按钮
@@ -56,10 +61,10 @@ export default {
       // 复制信息到邮箱
       // navigator.clipboard.writeText("g_morty@qq.com");
       try {
-        console.log("try");
+        // 用新的方法尝试复制
         navigator.clipboard.writeText("g_morty@qq.com");
       } catch (e) {
-        console.log("catch");
+        // 用旧方法尝试复制
         const textArea = document.createElement("textarea");
         textArea.value = "g_morty@qq.com";
         // 使text area不在viewport，同时设置不可见
@@ -82,8 +87,25 @@ export default {
     },
     // 展示抽屉
     showDrawer() {
-      console.log(2);
-      this.$message("待完成");
+      // console.log(2);
+      // this.$message("待完成");
+      this.$router.push("/sign");
+    },
+    // 判断是否登录
+    isLogin() {
+      // 获取本地token
+      const token = localStorage.getItem("token");
+      // 如果本地token为空，跳转至登录页面
+      if (token === null) {
+        return this.$router.push("/sign");
+      }
+      // 验证token是否能通过验证
+      // 如果通过继续
+      // 如果未通过跳转至登录页面
+
+      // 查看本地是否有缓存的导航数据
+      // 如果有 获取并展示
+      // 如果没有 根据token获取该用户的导航数据 并缓存
     },
   },
 };

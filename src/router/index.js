@@ -5,13 +5,12 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/123',
+    path: '/',
     name: 'home',
     component: () => import('@/pages/home')
   },
   {
-    path: '*',
-    // path: '/sign',
+    path: '/sign',
     name: 'sign',
     component: () => import('@/pages/sign')
   },

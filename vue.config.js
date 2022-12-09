@@ -3,12 +3,20 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     proxy: {
-      '/baidu': {
-        target: 'https://www.baidu.com',
+      '/api/baidu': {
+        target: 'https://www.baidu.com/',
         changeOrigin: true,
-        ws:true,
+        ws: true,
         pathRewrite: {
-          "^/baidu": ''
+          "^/api/baidu": ''
+        }
+      },
+      '/api': {
+        target: 'http://127.0.0.1:10080/',
+        changeOrigin: true,
+        ws: true,
+        pathRewrite: {
+          "^/api": ''
         }
       },
     }

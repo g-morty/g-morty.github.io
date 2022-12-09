@@ -86,7 +86,7 @@ export default [
       {
         navName: "思否",
         navLink: "https://segmentfault.com/",
-        navIcon: "https://segmentfault.com/favicon.ico",
+        navIcon: "https://static.segmentfault.com/main_site/0fcbe8cd/static/sf-icon-small.82a498f6.svg",
       },
       {
         navName: "掘金",

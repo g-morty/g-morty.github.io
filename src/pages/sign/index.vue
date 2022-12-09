@@ -23,17 +23,20 @@
         </div>
         <div class="form-box">
           <div class="input-box">
-            <input type="text" required="requird" />
+            <input type="text" required="requird" v-model.trim="account.name" />
             <span>用户名</span>
             <i></i>
           </div>
           <div class="input-box">
-            <input type="password" required="requird" />
+            <input type="password" required="requird" v-model="account.password" />
             <span>密码</span>
             <i></i>
           </div>
-          <button class="submit-btn">确认</button>
-          <div class="forget-password">忘记密码</div>
+          <button class="submit-btn" @click="login">登录</button>
+          <div class="reg-or-forget">
+            <div class="forget-password">注册</div>
+            <div class="forget-password">忘记密码</div>
+          </div>
         </div>
       </div>
     </div>
@@ -41,16 +44,44 @@
 </template>
 
 <script>
+import { login } from "../../api/account";
 export default {
   data() {
     return {
       // 页面高度
       windowHeight: 0,
+      account: {
+        name: "",
+        password: "",
+      },
     };
   },
   created() {
     this.windowHeight = window.innerHeight;
     window.onresize = () => (this.windowHeight = window.innerHeight);
+  },
+  methods: {
+    // 登录
+    async login() {
+      // 如果用户名非法
+      if (!/(^[a-zA-Z\S0-9]{2,12}$)/.test(this.account.name)) {
+        return this.$message({
+          message: "注意，用户名应为2-12字符",
+          type: "warning",
+        });
+      }
+      // 如果密码非法
+      if (!/(^[a-zA-Z\S0-9]{6,12}$)/.test(this.account.password)) {
+        return this.$message({
+          message: "注意，密码应为2-12字符",
+          type: "warning",
+        });
+      }
+      // 请求登录接口
+      const loginRes = await login({ name:this.account.name, password:this.account.password });
+      
+      console.log(loginRes);
+    },
   },
 };
 </script>
@@ -239,14 +270,20 @@ export default {
             background-color: #94eeeb44;
           }
         }
-        .forget-password{
+        .reg-or-forget {
           margin-top: 18px;
+          display: flex;
+          width: 320px;
+          justify-content: flex-end;
+          // width: 100%;
+        }
+        .forget-password {
           font-size: 12px;
           cursor: pointer;
           color: #01e6ff99;
-          width: 320px;
           text-align: right;
           text-decoration: underline;
+          margin-left: 20px;
         }
       }
     }
