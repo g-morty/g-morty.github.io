@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import {search} from "../../api/search"
+import { search } from "../../api/search";
 export default {
   data() {
     return {
@@ -33,20 +33,16 @@ export default {
       //   `/baidu/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&wd=${keyWord}&req=2`
       // );
       // console.log( search );
-      const searchRes = await search(
-       
-        {
-          wd: keyWord,
-          pre:1,
-          p:3,
-          ie:'utf-i',
-          json:1,
-          prod: 'pc',
-          from: 'pc_web',
-          req: 2
-          // ?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&req=2
-        }
-      );
+      const searchRes = await search({
+        wd: keyWord,
+        pre: 1,
+        p: 3,
+        ie: "utf-i",
+        json: 1,
+        prod: "pc",
+        from: "pc_web",
+        req: 2,
+      });
       // 如果顺利拿到数据(状态为200、状态描述为OK、数据不为空、输入框不为空)
 
       if (
