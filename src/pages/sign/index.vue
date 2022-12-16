@@ -32,10 +32,10 @@
             <span>密码</span>
             <i></i>
           </div>
-          <button class="submit-btn" @click="login">登录</button>
+          <button class="submit-btn" @click="handleLogin">登录</button>
           <div class="reg-or-forget">
-            <div class="forget-password">注册</div>
-            <div class="forget-password">忘记密码</div>
+            <div class="forget-password" @click="handleRegister">注册</div>
+            <div class="forget-password" @click="forgetPassword">忘记密码</div>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { login } from "../../api/account";
+import { login, register } from "../../api/account";
 export default {
   data() {
     return {
@@ -62,25 +62,75 @@ export default {
   },
   methods: {
     // 登录
-    async login() {
+    async handleLogin() {
+      if (!this.isPass()) {
+        return;
+      }
+      // 请求登录接口
+      const loginRes = await login({
+        name: this.account.name,
+        password: this.account.password,
+      });
+      // 如果登录成功
+      if (loginRes.ok === 1) {
+        // 将用户名和token放入本地
+        localStorage.setItem("name", loginRes.data.name);
+        localStorage.setItem("token", loginRes.data.token);
+        this.$message({ message: "登录成功", type: "success" });
+        this.$router.back();
+      } else {
+        // 如果没有该用户信息
+        if (loginRes.status === 1) {
+          this.$message({ message: "该用户不存在", type: "warning" });
+        } else if (loginRes.status === 2) {
+          this.$message({ message: "密码错误", type: "warning" });
+        }
+      }
+    },
+    async handleRegister() {
+      if (!this.isPass()) {
+        return;
+      }
+      // 请求注册接口
+      const registerRes = await register({
+        name: this.account.name,
+        password: this.account.password,
+      });
+      // 如果注册成功
+      if (registerRes.ok === 1) {
+        // 将用户名和token放入本地
+        localStorage.setItem("name", registerRes.data.name);
+        localStorage.setItem("token", registerRes.data.token);
+        this.$message({ message: "注册成功", type: "success" });
+        this.$router.back();
+      } else {
+        this.$message({ message: "该用户已存在", type: "warning" });
+      }
+      console.log(registerRes);
+    },
+    // 工具函数--判断用户名密码是否合法
+    isPass() {
       // 如果用户名非法
       if (!/(^[a-zA-Z\S0-9]{2,12}$)/.test(this.account.name)) {
-        return this.$message({
+        this.$message({
           message: "注意，用户名应为2-12字符",
           type: "warning",
         });
+        return false;
       }
       // 如果密码非法
       if (!/(^[a-zA-Z\S0-9]{6,12}$)/.test(this.account.password)) {
-        return this.$message({
+        this.$message({
           message: "注意，密码应为2-12字符",
           type: "warning",
         });
+        return false;
       }
-      // 请求登录接口
-      const loginRes = await login({ name:this.account.name, password:this.account.password });
-      
-      console.log(loginRes);
+      return true;
+    },
+    //
+    forgetPassword() {
+      this.$message({ message: "功能开发中。。。" });
     },
   },
 };
