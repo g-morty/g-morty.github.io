@@ -84,9 +84,12 @@ export default {
           this.$message({ message: "该用户不存在", type: "warning" });
         } else if (loginRes.status === 2) {
           this.$message({ message: "密码错误", type: "warning" });
+        } else {
+          this.$message({ message: "未知错误", type: "error" });
         }
       }
     },
+    // 注册函数
     async handleRegister() {
       if (!this.isPass()) {
         return;

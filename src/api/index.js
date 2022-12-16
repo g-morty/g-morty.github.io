@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 /**
  * 创造axios实例函数
  * */
-function createAxios(isToken = false) {
+function createAxios({ isToken } = { isToken: false }) {
   // 创造axios实例
   const requests = axios.create({
     baseURL: '/api'
