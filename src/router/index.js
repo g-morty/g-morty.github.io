@@ -1,18 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import { authLevel } from '@/config/enum';
+import verifyToken from '@/tools/verifyToken';
+
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/pages/home')
+    component: () => import('@/pages/home'),
+    beforeEnter: verifyToken,
+    meta: { authLevel: authLevel.USER }
   },
   {
     path: '/sign',
     name: 'sign',
-    component: () => import('@/pages/sign')
+    component: () => import('@/pages/sign'),
   },
 ]
 

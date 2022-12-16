@@ -52,8 +52,7 @@ export default {
     // 监听页面高度
     this.windowHeight = window.innerHeight;
     window.onresize = () => (this.windowHeight = window.innerHeight);
-    // 判断是否登录
-    this.isLogin();
+
   },
   methods: {
     // 点击footer下的邮箱按钮
@@ -91,22 +90,7 @@ export default {
       // this.$message("待完成");
       this.$router.push("/sign");
     },
-    // 判断是否登录
-    isLogin() {
-      // 获取本地token
-      const token = localStorage.getItem("token");
-      // 如果本地token为空，跳转至登录页面
-      if (token === null) {
-        return this.$router.push("/sign");
-      }
-      // 验证token是否能通过验证
-      // 如果通过继续
-      // 如果未通过跳转至登录页面
-
-      // 查看本地是否有缓存的导航数据
-      // 如果有 获取并展示
-      // 如果没有 根据token获取该用户的导航数据 并缓存
-    },
+ 
   },
 };
 </script>
