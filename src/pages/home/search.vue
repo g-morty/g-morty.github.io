@@ -44,14 +44,8 @@ export default {
         req: 2,
       });
       // 如果顺利拿到数据(状态为200、状态描述为OK、数据不为空、输入框不为空)
-
-      if (
-        searchRes.status === 200 &&
-        searchRes.statusText === "OK" &&
-        !!searchRes.data.g &&
-        !!this.searchUrl
-      ) {
-        return (this.searchList = searchRes.data.g.map((item) => ({
+      if (!!searchRes.g && !!this.searchUrl) {
+        return (this.searchList = searchRes.g.map((item) => ({
           key: this.$nanoid(),
           value: item.q,
         })));

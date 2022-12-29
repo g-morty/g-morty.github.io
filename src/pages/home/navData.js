@@ -123,6 +123,11 @@ export default [
         navLink: "https://typescript.bootcss.com/",
         navIcon: "https://typescript.bootcss.com/images/typescript-icon.svg",
       },
+      {
+        navName:"javascript.info",
+        navLink:"https://zh.javascript.info/import-export?map",
+        navIcon:"https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg"
+      }
     ],
   },
   {
@@ -231,19 +236,15 @@ export default [
     navTitle: "react",
     navList: [
       {
-        navName: "vue2.x",
-        navLink: "https://v2.cn.vuejs.org/",
-        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
+        navName: "react",
+        navLink: "https://react.docschina.org/",
+        navIcon: "https://react.docschina.org/favicon.ico",
       },
+ 
       {
-        navName: "vue3.x",
-        navLink: "https://cn.vuejs.org/",
-        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
-      },
-      {
-        navName: "vue-cli",
-        navLink: "https://cli.vuejs.org/zh/",
-        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
+        navName: "react",
+        navLink: "https://reactjs.bootcss.com/",
+        navIcon: "https://reactjs.bootcss.com/favicon.ico",
       },
       {
         navName: "vite",
@@ -255,22 +256,7 @@ export default [
         navLink: "https://v3.router.vuejs.org/zh/",
         navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
       },
-      {
-        navName: "vuex",
-        navLink: "https://vuex.vuejs.org/zh/",
-        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
-      },
-      {
-        navName: "wepy1",
-        navLink: "https://wepyjs.github.io/wepy-docs/1.x/",
-        navIcon: "https://wepyjs.github.io/wepy-docs/static/img/wepylogo.png",
-      },
-      {
-        navName: "wepy2",
-        navLink: "https://wepyjs.github.io/wepy-docs/2.x/#/",
-        navIcon: "https://wepyjs.github.io/wepy-docs/static/img/wepylogo.png",
-      },
-
+      
 
     ],
   },
