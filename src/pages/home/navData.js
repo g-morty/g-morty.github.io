@@ -183,6 +183,11 @@ export default [
         navLink: "https://picwish.cn/",
         navIcon: "https://qncdn.aoscdn.com/astro/picwish/assets/index-top-banner-logo.b8d7b10f.svg",
       },
+      {
+        navName: "base64",
+        navLink: "http://www.jsons.cn/base64/",
+        navIcon: "http://www.jsons.cn/favicon.ico",
+      },
     ],
   },
   {
@@ -219,17 +224,10 @@ export default [
         navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
       },
       {
-        navName: "wepy1",
-        navLink: "https://wepyjs.github.io/wepy-docs/1.x/",
+        navName: "wepy",
+        navLink: "https://wepyjs.github.io/wepy-docs/2.x/",
         navIcon: "https://wepyjs.github.io/wepy-docs/static/img/wepylogo.png",
       },
-      {
-        navName: "wepy2",
-        navLink: "https://wepyjs.github.io/wepy-docs/2.x/#/",
-        navIcon: "https://wepyjs.github.io/wepy-docs/static/img/wepylogo.png",
-      },
-
-
     ],
   },
   {
@@ -246,18 +244,6 @@ export default [
         navLink: "https://reactjs.bootcss.com/",
         navIcon: "https://reactjs.bootcss.com/favicon.ico",
       },
-      {
-        navName: "vite",
-        navLink: "https://vitejs.cn/",
-        navIcon: "https://vitejs.cn/logo.svg",
-      },
-      {
-        navName: "vue-router",
-        navLink: "https://v3.router.vuejs.org/zh/",
-        navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
-      },
-      
-
     ],
   },
   {
