@@ -22,7 +22,7 @@
           笔记
         </div>
         <div class="drawer-nav-item">
-          管理
+          导航管理
         </div>
         <div class="drawer-nav-item">
           后台

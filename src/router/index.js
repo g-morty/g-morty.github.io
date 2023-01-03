@@ -18,7 +18,11 @@ const routes = [
         path: 'navigate',
         name: 'navigate',
         component: () => import('@/pages/navigate'),
-        meta: { authLevel: authLevel.USER },
+      },
+      {
+        path: 'navigate_edit',
+        name: 'navigate_edit',
+        component: () => import('@/pages/navigate_edit'),
       }
     ]
   },

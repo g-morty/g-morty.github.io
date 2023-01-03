@@ -1,6 +1,4 @@
-
 <template>
-
   <div>
     <!-- main -->
     <el-main>
@@ -12,7 +10,7 @@
               <el-image class="nav-icon" :lazy="true" :src="subItem.navIcon" fit="cover">
                 <el-image class="nav-icon" slot="error" src="/favicon.ico" fit="cover"></el-image>
               </el-image>
-              <el-link class="nav-link" :underline="false" target="_blank">{{subItem.navName}}</el-link>
+              <div class="nav-link">{{subItem.navName}}</div>
             </a>
           </div>
           <el-divider></el-divider>
@@ -154,11 +152,14 @@ export default {
             border-bottom: (@nav-height / 2) solid transparent;
           }
         }
-        .nav-item {
+        .nav-item,
+        .nav-item:link,
+        .nav-item:active {
           display: flex;
           height: @nav-height;
           align-items: center;
           margin-right: 20px;
+         
           .nav-icon {
             width: 20px;
             height: 20px;
@@ -169,7 +170,7 @@ export default {
           }
           .nav-link {
             margin-left: 6px;
-            text-decoration: none;
+            font-size: 14px;
           }
         }
       }
