@@ -7,7 +7,7 @@
       <div class="account-icon" @click="showDrawer"><i class="el-icon-s-fold"></i></div>
     </el-header>
     <!-- main -->
-    <!-- <el-main>
+    <el-main>
       <div class="nav-box">
         <template v-for="(item,index) in navData">
           <div class="nav-line" :key="index">
@@ -22,7 +22,7 @@
           <el-divider></el-divider>
         </template>
       </div>
-    </el-main> -->
+    </el-main>
     <!-- footer -->
     <el-footer height="40px">
       <div class="email-box" @click="saveEmail">
