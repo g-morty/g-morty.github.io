@@ -12,7 +12,7 @@ module.exports = defineConfig({
         }
       },
       '/api': {
-        target: 'http://127.0.0.1:10080/',
+        target: 'http://127.0.0.1:20080/',
         changeOrigin: true,
         ws: true,
         pathRewrite: {
