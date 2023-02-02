@@ -24,7 +24,31 @@ export default [
       },
     ],
   },
-
+  {
+    navTitle: "本地",
+    navList: [
+      {
+        navName: "入口路由",
+        navLink: "http://www.missright.wang:10000",
+        navIcon: "http://www.missright.wang:10000/luci-static/atmaterial_Brown/favicon.ico",
+      },
+      {
+        navName: "A路由",
+        navLink: "http://192.168.10.110/index.asp",
+        navIcon: "http://192.168.10.110/images/favicon.png",
+      },
+      // {
+      //   navName: "B路由",
+      //   navLink: "https://wallhaven.cc/",
+      //   navIcon: "https://wallhaven.cc/favicon.ico",
+      // },
+      {
+        navName: "NAS",
+        navLink: "http://www.missright.wang:15000/",
+        navIcon: "http://www.missright.wang:15000/webman/favicon.ico?v=40438",
+      },
+    ],
+  },
   {
     navTitle: "视频",
     navList: [
@@ -124,9 +148,9 @@ export default [
         navIcon: "https://typescript.bootcss.com/images/typescript-icon.svg",
       },
       {
-        navName:"javascript.info",
-        navLink:"https://zh.javascript.info/import-export?map",
-        navIcon:"https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg"
+        navName: "javascript.info",
+        navLink: "https://zh.javascript.info/import-export?map",
+        navIcon: "https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg"
       }
     ],
   },
@@ -240,7 +264,7 @@ export default [
         navLink: "https://react.docschina.org/",
         navIcon: "https://react.docschina.org/favicon.ico",
       },
- 
+
       {
         navName: "react",
         navLink: "https://reactjs.bootcss.com/",
@@ -256,7 +280,7 @@ export default [
         navLink: "https://v3.router.vuejs.org/zh/",
         navIcon: "https://v2.cn.vuejs.org/images/logo.svg",
       },
-      
+
 
     ],
   },
