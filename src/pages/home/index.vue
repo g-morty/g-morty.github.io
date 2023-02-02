@@ -1,39 +1,42 @@
 <template>
-  <el-container :style="`min-height: ${windowHeight}px`">
+  <el-container >
+  <!-- <el-container :style="`min-height: ${windowHeight}px`"> -->
     <el-header>
       <el-image class="logo" :src="require('@/assets/logo.png')"></el-image>
       <SearchBox />
       <div class="account-icon" @click="showDrawer"><i class="el-icon-s-fold"></i></div>
     </el-header>
-    <!-- <Navigate/> -->
-    <router-view/>
-    <!-- drawer -->
-    <el-drawer custom-class="drawer" :visible.sync="isShowDrawer" direction="rtl" :show-close="false" :withHeader="false">
-      <div class="drawer-user-info">
-        <div class="drawer-user-avatar"></div>
-        <div class="drawer-user-name">Asa</div>
-        <!-- <img :src="require('@/assets/avatar.jpeg')" alt=""> -->
+    <!-- main -->
+    <el-main>
+      <div class="nav-box">
+        <template v-for="(item,index) in navData">
+          <div class="nav-line" :key="index">
+            <div class="nav-title">{{item.navTitle}}</div>
+            <a class="nav-item" v-for="(subItem,subIndex) in item.navList" :key="subIndex" :href="subItem.navLink" target="_blank">
+              <el-image class="nav-icon" :lazy="true" :src="subItem.navIcon" fit="cover">
+                <el-image class="nav-icon" slot="error" src="/favicon.ico" fit="cover"></el-image>
+              </el-image>
+              <div class="nav-link">{{subItem.navName}}</div>
+            </a>
+          </div>
+          <el-divider></el-divider>
+        </template>
       </div>
-      <div class="drawer-nav-list">
-        <div class="drawer-nav-item drawer-nav-item-select">
-          导航
-        </div>
-        <div class="drawer-nav-item">
-          笔记
-        </div>
-        <div class="drawer-nav-item">
-          导航管理
-        </div>
-        <div class="drawer-nav-item">
-          后台
-        </div>
+    </el-main>
+    <!-- footer -->
+    <el-footer height="40px">
+      <div class="email-box" @click="saveEmail">
+        <div class="email-title">email：</div>
+        <div class="email-content">g_morty@qq.com</div>
       </div>
-    </el-drawer>
+    </el-footer>
   </el-container>
+
 </template>
 
 <script>
-import SearchBox from "./search.vue";
+import navData from "../home/navData";
+import SearchBox from "../home/search.vue";
 export default {
   data() {
     return {
@@ -41,10 +44,15 @@ export default {
       isShowDrawer: false,
       // 页面高度
       windowHeight: 0,
+      // 导航数据
+      navData,
+      // 是否显示导航
+      isShowNavigate: false,
     };
   },
   components: { SearchBox },
-   created() {
+
+  created() {
     // 监听页面高度
     this.windowHeight = window.innerHeight;
     window.onresize = () => (this.windowHeight = window.innerHeight);
@@ -54,6 +62,35 @@ export default {
     showDrawer() {
       this.isShowDrawer = true;
     },
+    // 点击footer下的邮箱按钮
+    saveEmail() {
+      // 复制信息到邮箱
+      // navigator.clipboard.writeText("g_morty@qq.com");
+      try {
+        // 用新的方法尝试复制
+        navigator.clipboard.writeText("g_morty@qq.com");
+      } catch (e) {
+        // 用旧方法尝试复制
+        const textArea = document.createElement("textarea");
+        textArea.value = "g_morty@qq.com";
+        // 使text area不在viewport，同时设置不可见
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        textArea.remove();
+      }
+
+      // 提示成功
+      this.$notify({
+        title: "email",
+        message: "已复制到剪切板",
+        position: "bottom-right",
+        type: "success",
+        duration: "2000",
+        offset: 30,
+      });
+    },
   },
 };
 </script>
@@ -62,7 +99,7 @@ export default {
 @primary-color: #409eff;
 @page-bg-color: #fafafa;
 .el-container {
-  // overflow: hidden;
+  overflow: hidden;
   background-color: @page-bg-color;
   .el-header {
     box-sizing: border-box;
@@ -88,7 +125,98 @@ export default {
       }
     }
   }
-
+  .el-main {
+    background-color: @page-bg-color;
+    padding-bottom: 20px;
+    .nav-box {
+      margin: 40px auto 0;
+      width: 80%;
+      .nav-line {
+        display: flex;
+        @nav-height: 30px;
+        // 箭头标题
+        .nav-title {
+          @arrow-length: 20px;
+          width: 70px;
+          height: @nav-height;
+          background-image: linear-gradient(to right, #59c8f7, @primary-color);
+          color: white;
+          font-size: 14px;
+          box-sizing: border-box;
+          line-height: @nav-height;
+          text-align: right;
+          position: relative;
+          margin-right: 60px;
+          padding-right: 4px;
+          &:before {
+            content: " ";
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-left: @arrow-length solid @page-bg-color;
+            border-top: (@nav-height / 2) solid transparent;
+            border-bottom: (@nav-height / 2) solid transparent;
+          }
+          &:after {
+            content: " ";
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            right: -@arrow-length;
+            top: 0;
+            border-left: @arrow-length solid @primary-color;
+            border-top: (@nav-height / 2) solid transparent;
+            border-bottom: (@nav-height / 2) solid transparent;
+          }
+        }
+        .nav-item,
+        .nav-item:link,
+        .nav-item:active {
+          display: flex;
+          height: @nav-height;
+          align-items: center;
+          margin-right: 20px;
+         
+          .nav-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            // border: 1px solid #409eff;
+            background-color: #60626633;
+          }
+          .nav-link {
+            margin-left: 6px;
+            font-size: 14px;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+  .el-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #e8ecf4;
+    display: flex;
+    border-top: 1px solid #90939944;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+    height: 20px;
+    .email-box {
+      color: #606266;
+      display: flex;
+      cursor: pointer;
+      &:hover {
+        color: @primary-color;
+      }
+    }
+  }
   .drawer {
     .drawer-user-info {
       margin-top: 30px;

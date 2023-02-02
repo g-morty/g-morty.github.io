@@ -8,23 +8,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: () => import('@/pages/home'),
     beforeEnter: verifyToken,
     meta: { authLevel: authLevel.USER },
-    children: [
-      {
-        path: 'navigate',
-        name: 'navigate',
-        component: () => import('@/pages/navigate'),
-      },
-      {
-        path: 'navigate_edit',
-        name: 'navigate_edit',
-        component: () => import('@/pages/navigate_edit'),
-      }
-    ]
   },
   {
     path: '/sign',
@@ -33,7 +21,7 @@ const routes = [
   },
   {
     path: '*',
-    redirect: '/home/navigate'
+    redirect: '/'
   }
 ]
 
