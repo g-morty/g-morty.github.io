@@ -1,6 +1,6 @@
 <template>
   <el-container >
-  <!-- <el-container :style="`min-height: ${windowHeight}px`"> -->
+    <!-- header -->
     <el-header>
       <el-image class="logo" :src="require('@/assets/logo.png')"></el-image>
       <SearchBox />
@@ -31,12 +31,11 @@
       </div>
     </el-footer>
   </el-container>
-
 </template>
 
 <script>
-import navData from "../home/navData";
-import SearchBox from "../home/search.vue";
+import navData from "./navData";
+import SearchBox from "./search.vue";
 export default {
   data() {
     return {

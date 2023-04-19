@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { search } from "../../api/search";
+import { search } from "@/api/search";
 export default {
   data() {
     return {
@@ -101,19 +101,21 @@ export default {
   position: relative;
   .search-input {
     width: 500px;
+    height: 50px;
     margin: 8px;
     position: relative;
     z-index: 10;
+    overflow: hidden;
+    vertical-align: center;
   }
   .search-list {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: red;
     z-index: 5;
     border-radius: 8px;
-    padding-top: 60px;
+    padding-top: 56px;
     background-color: #fefefe;
     border: 1px solid #f8eaea;
 
@@ -123,7 +125,7 @@ export default {
       background-color: #fefefe;
       width: 100%;
       padding: 0 20px;
-      margin: 5px 0;
+      margin: 5px 0px;
       box-sizing: border-box;
       color: #222;
       &:hover {
