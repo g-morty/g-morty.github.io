@@ -1,10 +1,10 @@
 <template>
   <div class="search-box">
-    <el-input class="search-input" @blur="isSearchFocus = false" @focus="isSearchFocus = true" @input="searchByKeyWord" @keypress.enter.native="handleSearch" v-model="searchUrl" autocomplete="on" suffix-icon="el-icon-search" placeholder="搜索" :autofocus="isSearchFocus">
+    <el-input class="search-input" ref="input" @blur="isSearchFocus = false" @focus="isSearchFocus = true" @input="searchByKeyWord" @keypress.enter.native="handleSearch" v-model="searchUrl" autocomplete="on" suffix-icon="el-icon-search" placeholder="搜索" :autofocus="isSearchFocus">
     </el-input>
     <!-- 对样式修饰一下 -->
     <div class="search-list" v-show="isSearchFocus">
-      <div class="search-item" v-for="item in searchList" :key="item.key" @mousedown="addKeyWordToSearch(item.value)">
+      <div :class=" { 'current-search-item': index === searchListIndex ,'search-item': true}" v-for="(item,index) in searchList" :key="item.key" @mousedown="addKeyWordToSearch(item.value)">
         {{item.value}}
       </div>
     </div>
@@ -20,19 +20,21 @@ export default {
       searchUrl: "",
       // 搜索结果
       searchList: [],
+      // 搜索下标
+      searchListIndex: -1,
       // 搜索框是否是选中状态
       isSearchFocus: false,
-      //
     };
+  },
+  mounted() {
+    console.log("bac");
+    document.onkeydown = this.pressShunt;
   },
   methods: {
     // 搜索框内容改变时，获取内容补充
     async searchByKeyWord(keyWord) {
+      this.searchListIndex = -1;
       // 借助百度api，根据关键字获取内容补充列表
-      // const searchRes = await this.$axios.get(
-      //   `/baidu/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&wd=${keyWord}&req=2`
-      // );
-      // console.log( search );
       const searchRes = await search({
         wd: keyWord,
         pre: 1,
@@ -60,7 +62,42 @@ export default {
       // 这里先执行，然后执行blur，所以还是失去了焦点，那我参考b站，点击直接跳转呢？
       this.handleSearch();
     },
-    // 搜索框回车
+    // 监听全局按键
+    pressShunt(event) {
+      // 如果输入框没有焦点 终止运行
+      if (!this.isSearchFocus) return;
+      // 如果搜索内容为空 终止运行
+      if (this.searchList.length === 0) return;
+      // 获取当前下标
+      let searchListIndex = this.searchListIndex;
+      // 如果按下键
+      if (event.key === "ArrowDown") {
+        if (searchListIndex < this.searchList.length - 1) {
+          searchListIndex += 1;
+        }
+        if (searchListIndex === this.searchList.length - 1) {
+          searchListIndex = 0;
+        }
+      }
+      // 如果按上键
+      if (event.key === "ArrowUp") {
+        if (searchListIndex <= 0) {
+          searchListIndex = this.searchList.length - 1;
+        } else {
+          searchListIndex -= 1;
+        }
+      }
+      // 如果待选下标有效
+      if (searchListIndex != -1) {
+        this.searchListIndex = searchListIndex;
+        this.searchUrl = this.searchList[searchListIndex].value;
+      }
+      // 如果按上键
+      if (event.key === "ArrowUp") {
+        return false;
+      }
+    },
+    // 进行搜索
     handleSearch() {
       const searchUrl = this.searchUrl;
       // 域名正则列表
@@ -135,6 +172,10 @@ export default {
       &:last-child {
         margin-bottom: 13px;
       }
+    }
+    .current-search-item {
+      background-color: #bfe8f544;
+      cursor: pointer;
     }
   }
 }

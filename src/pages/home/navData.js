@@ -58,6 +58,11 @@ export default [
         navLink: "https://www.youtube.com/",
         navIcon: "https://www.youtube.com/favicon.ico",
       },
+      {
+        navName: "低端影视",
+        navLink: "https://ddys.art/category/anime/",
+        navIcon: "https://ddys.art/favicon-32x32.png",
+      },
     ],
   },
   {
