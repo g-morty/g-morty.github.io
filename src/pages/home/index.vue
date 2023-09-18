@@ -59,7 +59,8 @@ export default {
   methods: {
     // 展示抽屉
     showDrawer() {
-      this.isShowDrawer = true;
+      // this.isShowDrawer = true;
+      this.$router.push('/countDown')
     },
     // 点击footer下的邮箱按钮
     saveEmail() {

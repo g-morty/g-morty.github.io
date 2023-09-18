@@ -22,13 +22,14 @@ function createAxios({ isToken } = { isToken: false }) {
         config.headers.Authorization = localToken;
       } else {
         // 如果没有token，终止请求，抛出错误
-        throw new AxiosError('token is null', AxiosError.ERR_BAD_REQUEST, config, 'abc')
+        // throw new AxiosError('token is null', AxiosError.ERR_BAD_REQUEST, config, 'abc')
       }
     }
     return config;
   })
   // 响应拦截器
   requests.interceptors.response.use(res => {
+    console.log({res})
     if (res.status === 200) {
       return res.data;
     } else {

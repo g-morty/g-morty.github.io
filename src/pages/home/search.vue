@@ -27,7 +27,6 @@ export default {
     };
   },
   mounted() {
-    console.log("bac");
     document.onkeydown = this.pressShunt;
   },
   methods: {

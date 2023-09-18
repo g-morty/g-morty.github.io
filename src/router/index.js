@@ -20,6 +20,11 @@ const routes = [
     component: () => import('@/pages/sign'),
   },
   {
+    path: '/countDown',
+    name: 'countDown',
+    component: () => import('@/pages/countDown'),
+  },
+  {
     path: '*',
     redirect: '/'
   }

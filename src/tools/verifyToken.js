@@ -1,7 +1,6 @@
 import { isTokenPass } from "../api/account"
 // 验证token权限是否允许通过该路由。
 async function verifyToken(to, _, next) {
-  console.log(to);
   if (to.path === '/') {
     // 获取所需权限等级
     const authLevel = to.meta.authLevel;
@@ -12,14 +11,17 @@ async function verifyToken(to, _, next) {
       return next("/sign");
     }
     // 验证token是否能通过验证
-    const isPassRes = await isTokenPass({ authLevel });
-    console.log({ isPassRes, authLevel });
-    // 通过放行，未通过跳转至登录
-    (isPassRes.isPass) ? next() : next('/sign')
+    try{
+      const isPassRes = await isTokenPass({ authLevel });
+      // 通过放行，未通过跳转至登录
+      (isPassRes.isPass) ? next() : next('/sign')
+    }catch(e){
+      next()
+    }
   }
-else{
-  next()
-}
+  else {
+    next()
+  }
 }
 
 export default verifyToken

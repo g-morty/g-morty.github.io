@@ -1,5 +1,20 @@
 export default [
   {
+    navTitle: "常用",
+    navList: [
+      {
+        navName: "B站",
+        navLink: "https://www.bilibili.com/",
+        navIcon: "https://www.bilibili.com/favicon.ico",
+      },
+      {
+        navName: "搜狗翻译",
+        navLink: "https://fanyi.sogou.com/text",
+        navIcon: "https://fanyi.sogou.com/favicon.ico",
+      },
+    ],
+  },
+  {
     navTitle: "壁纸",
     navList: [
       {
@@ -24,7 +39,6 @@ export default [
       },
     ],
   },
-
   {
     navTitle: "视频",
     navList: [
@@ -297,6 +311,21 @@ export default [
         navName: "bootstrap",
         navLink: "https://v5.bootcss.com/",
         navIcon: "https://v5.bootcss.com/favicon.ico",
+      },
+    ],
+  },
+  {
+    navTitle: "资源",
+    navList: [
+      {
+        navName: "一网一匠",
+        navLink: "https://ywyj.cn/",
+        navIcon: "https://ywyj.cn/logo.png",
+      },
+      {
+        navName: "终极导航",
+        navLink: "https://www.zjnav.com/",
+        navIcon: "https://zjnav.com/iconsy/ico.png",
       },
     ],
   },
